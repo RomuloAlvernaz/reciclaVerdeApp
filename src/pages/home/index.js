@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import MyInput from '../../components/MyInput';
 
 const HomeScreen = () => {
   return (
@@ -11,6 +12,7 @@ const HomeScreen = () => {
         />
       </View>
       <View style={styles.whiteArea}>
+      <MyInput />
         <View style={styles.rectangleWrapper}>
           <View style={styles.rectangle}>
             <Text style={styles.rectangleText}>
