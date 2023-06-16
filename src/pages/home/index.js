@@ -1,17 +1,30 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 import MyInput from '../../components/MyInput';
 import MyButton from '../../components/MyButton/index'
 
 const HomeScreen = () => {
+    const handleLoginPress = () => {
+        
+        console.log('Clicou em Login');
+      };
+
   return (
     <View style={styles.container}>
       <View style={styles.greenArea}>
-        <Image
-          source={require('../../../assets/logo.png')}
-          style={styles.logo}
-        />
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../../../assets/logo.png')}
+            style={styles.logo}
+          />
+        </View>
+        <View style={styles.loginContainer}>
+          <TouchableOpacity onPress={handleLoginPress}>
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableOpacity>
+        </View>
       </View>
+
       <View style={styles.whiteArea}>
       <MyInput />
 
@@ -61,6 +74,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logoContainer: {
+    marginLeft: 20,
+  },
   logo: {
     width: 150,
     height: 150,
@@ -73,7 +89,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  loginContainer: {
+    marginRight: -370,
+    marginBottom: -20,
+  },
+  loginText: {
+    position: 'absolute',
+    bottom: 20,
+    right: 30,
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
   categoryText: {
     color: 'black',
     fontSize: 16,
@@ -88,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   rectangle: {
-    width: '100%',
+    width: '90%',
     height: '60%',
     borderRadius: 20,
     backgroundColor: '#c4c6c9',
