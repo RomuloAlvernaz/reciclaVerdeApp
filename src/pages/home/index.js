@@ -29,7 +29,7 @@ const HomeScreen = () => {
       <MyInput />
 
       <Text style={styles.categoryText}>
-      Procure acima acategoria {'\n'}que deseja reciclagem!
+      Procure acima a categoria {'\n'}que deseja reciclagem!
         </Text>
 
         <View style={styles.rectangleWrapper}>
@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logoContainer: {
-    marginLeft: 20,
+    marginLeft: 5,
+    marginBottom: 10,
   },
   logo: {
     width: 150,
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: '80%',
     height: '27%',
-    borderRadius: 0,
+    borderRadius: 4,
     backgroundColor: '#6DE398',
     justifyContent: 'center',
     alignItems: 'center',
