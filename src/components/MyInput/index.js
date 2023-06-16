@@ -1,6 +1,5 @@
 import React from "react";
-import {
-    SafeAreaView, TextInput, StyleSheet} from 'react-native';
+import {SafeAreaView, TextInput, StyleSheet} from 'react-native';
 
     const MyInput = () => {
         return (

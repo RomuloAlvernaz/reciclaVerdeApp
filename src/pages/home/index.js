@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import MyInput from '../../components/MyInput';
+import MyButton from '../../components/MyButton/index'
 
 const HomeScreen = () => {
   return (
@@ -13,7 +14,9 @@ const HomeScreen = () => {
       </View>
       <View style={styles.whiteArea}>
       <MyInput />
+
         <View style={styles.rectangleWrapper}>
+
           <View style={styles.rectangle}>
             <Text style={styles.rectangleText}>
               Garrafas Pet, Tampinhas,{'\n'}
@@ -21,20 +24,24 @@ const HomeScreen = () => {
               Pilhas e Baterias.
             </Text>
           </View>
+
           <View style={styles.greenRectangle}>
             <Text style={styles.greenRectangleText}>
               Se você trabalha com reciclagem,{'\n'}
               cadastre-se no botão abaixo, é grátis!
             </Text>
+
           </View>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Cadastro</Text>
-          </TouchableOpacity>
+          <MyButton></MyButton>
+          
         </View>
+
       </View>
+
       <View style={styles.bottomBar}>
         <Text style={styles.barText}>Ajude a salvar nosso Planeta!</Text>
       </View>
+
     </View>
   );
 };
@@ -95,21 +102,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 15,
     textAlign: 'center',
-  },
-  button: {
-    marginTop: 20,
-    width: '60%',
-    height: 50,
-    marginBottom: -110,
-    backgroundColor: '#6DE398',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   bottomBar: {
     height: '10%',
