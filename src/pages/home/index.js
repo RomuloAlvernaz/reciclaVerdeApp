@@ -15,6 +15,10 @@ const HomeScreen = () => {
       <View style={styles.whiteArea}>
       <MyInput />
 
+      <Text style={styles.categoryText}>
+      Procure acima acategoria {'\n'}que deseja reciclagem!
+        </Text>
+
         <View style={styles.rectangleWrapper}>
 
           <View style={styles.rectangle}>
@@ -68,6 +72,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  categoryText: {
+    color: 'black',
+    fontSize: 16,
+    marginBottom: -25,
+    marginTop: -30,
   },
   rectangleWrapper: {
     width: 350,
