@@ -1,39 +1,48 @@
-import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import MyInput from '../../components/MyInput';
-import MyButton from '../../components/MyButton/index'
+import MyButton from '../../components/MyButton/index';
+import LoginButton from '../../components/LoginButton/index.js'
+
+
 
 const HomeScreen = () => {
-    const handleLoginPress = () => {
-        
-        console.log('Clicou em Login');
-      };
+  const [inputText, setInputText] = useState('');
+  const navigation = useNavigation();
+
+  const handleLoginPress = () => {
+    console.log('Clicou em Login');
+    navigation.navigate('Login');
+  };
+
+  const handleCadastroPress = () => {
+    console.log('Clicou em Cadastro');
+  };
+
+  const handleInputChange = (text) => {
+    setInputText(text);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.greenArea}>
-        <View style={styles.logoContainer}>
-          <Image
-            source={require('../../../assets/logo.png')}
-            style={styles.logo}
-          />
-        </View>
-        <View style={styles.loginContainer}>
-          <TouchableOpacity onPress={handleLoginPress}>
-            <Text style={styles.loginText}>Login</Text>
-          </TouchableOpacity>
+        <View style={styles.contentWrapper}>
+          <View style={styles.logoContainer}>
+            <Image source={require('../../../assets/logo.png')} style={styles.logo} />
+          </View>
+          <View style={styles.buttonContainer}>
+            <LoginButton onPress={handleLoginPress} />
+          </View>
         </View>
       </View>
 
       <View style={styles.whiteArea}>
-      <MyInput />
+        <MyInput placeholder="Digite aqui a sua busca" value={inputText} onChangeText={handleInputChange} />
 
-      <Text style={styles.categoryText}>
-      Procure acima a categoria {'\n'}que deseja reciclagem!
-        </Text>
+        <Text style={styles.categoryText}>Procure acima a categoria{'\n'}que deseja reciclagem!</Text>
 
         <View style={styles.rectangleWrapper}>
-
           <View style={styles.rectangle}>
             <Text style={styles.rectangleText}>
               Garrafas Pet, Tampinhas,{'\n'}
@@ -47,21 +56,19 @@ const HomeScreen = () => {
               Se você trabalha com reciclagem,{'\n'}
               cadastre-se no botão abaixo, é grátis!
             </Text>
-
           </View>
-          <MyButton></MyButton>
-          
-        </View>
 
+          <MyButton onPress={handleCadastroPress} text="Cadastro" />
+        </View>
       </View>
 
       <View style={styles.bottomBar}>
         <Text style={styles.barText}>Ajude a salvar nosso Planeta!</Text>
       </View>
-
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -74,15 +81,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoContainer: {
+  logoContainer: {},
+  
+  contentWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     marginLeft: 5,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   logo: {
     width: 150,
     height: 150,
     resizeMode: 'contain',
-    marginBottom: -30,
+    marginBottom: -60,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 10,
+    right: -100,
+    marginBottom: -25,
   },
   whiteArea: {
     flex: 8,
@@ -91,16 +109,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loginContainer: {
-    marginRight: -370,
-    marginBottom: -20,
-  },
-  loginText: {
-    position: 'absolute',
-    bottom: 20,
-    right: 30,
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
+    marginBottom: 10,
+    marginLeft: 270,
+    marginTop: 50,
   },
   categoryText: {
     color: 'black',

@@ -4,6 +4,8 @@ import HomeScreen from './src/pages/home/index';
 import SplashScreen from './src/pages/splash/index';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import LoginPage from './src/pages/login/index';
+
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,11 @@ export default function App() {
           component={HomeScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Login"
+          component={LoginPage}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -32,4 +39,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
