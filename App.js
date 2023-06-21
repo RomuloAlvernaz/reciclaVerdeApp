@@ -26,7 +26,14 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={LoginPage}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: true,
+            headerTitle: '',
+            headerStyle: { backgroundColor: '#6DE398' },
+            headerTintColor: 'white',
+            headerBackTitleVisible: false,
+            headerLeftContainerStyle: styles.headerLeftContainer,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -37,5 +44,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  headerLeftContainer: {
+    marginTop: 60,
   },
 });

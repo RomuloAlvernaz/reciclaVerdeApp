@@ -28,7 +28,7 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <View style={styles.greenArea}>
         <View style={styles.contentWrapper}>
-          <View style={styles.logoContainer}>
+          <View style={styles.logo}>
             <Image source={require('../../../assets/logo.png')} style={styles.logo} />
           </View>
           <View style={styles.buttonContainer}>
@@ -81,8 +81,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoContainer: {},
-  
   contentWrapper: {
     flex: 1,
     alignItems: 'center',

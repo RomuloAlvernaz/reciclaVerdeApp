@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   greenArea: {
-    flex: 2,
+    height: 56, 
     backgroundColor: '#6DE398',
   },
   content: {
-    flex: 8,
-    backgroundColor: 'white',
+    flex: 1,
+    backgroundColor: 'transparent',
   },
   bottomBar: {
     height: '10%',
