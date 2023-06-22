@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   greenArea: {
-    height: 56, 
+    height: 120, 
     backgroundColor: '#6DE398',
   },
   content: {

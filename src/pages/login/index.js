@@ -1,46 +1,77 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from 'react-native';
-import PageLayout from '../../styles/PageLayout/index.js';
-import MyInput from '../../components/MyInput';
+import InputLogin from '../../components/InputLogin/index.js'
+import MeuBotao from '../../components/Botao/index.js'
 import { useNavigation } from '@react-navigation/native';
+
 
 function LoginPage() {
   const navigation = useNavigation();
   
+  const entrar = () => {
+    navigation.navigate('Home');
+  }
+  
   return (
-    <PageLayout>
-      <View style={styles.container}>
-        <Image source={require('../../../assets/logo.png')} style={styles.logo} />
-        <Text style={styles.loginText}>Login</Text>
-        <MyInput placeholder="Digite seu e-mail" />
-        <MyInput placeholder="Digite sua senha" secureTextEntry={true} />
+    <View style={styles.container}>
+      <Text style={styles.loginText}>Login</Text>
+      <InputLogin 
+        label="Email"
+        placeholder="Digite seu e-mail"
+        comMascara={false}
+      ></InputLogin>
+
+      <InputLogin 
+        label="Senha"
+        placeholder="Digite sua senha"
+        comMascara={true}
+      ></InputLogin>
+
+      <View style={styles.boxRecuperarSenha}>
+        <Text style={styles.recuperarSenha}>Recuperar senha</Text>
       </View>
-    </PageLayout>
-  );
+
+      <MeuBotao 
+        value={"Entrar"}
+        acao={entrar}
+      ></MeuBotao>
+      <View style={styles.bottomBar}>
+        <Text style={styles.barText}></Text>
+      </View>
+    </View>
+  )   
 }
 
 const styles = StyleSheet.create({
-  
-  logo: {
-    position: 'absolute',
-    top:-110,
-    width: 150,
-    height: 150,
-    resizeMode: 'contain',
-  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
-  
   loginText: {
-    fontSize: 24,
     color: '#0e642f',
-    fontSize: 50,
-    fontWeight: "bold",
-    alignItems: "center", 
-    marginBottom: 150, 
+    fontSize: 60,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginBottom: 15,
+  },
+  boxRecuperarSenha: {
+    width: 300,
+    justifyContent: "flex-end",
+    textAlign: "right",
+  },
+  recuperarSenha: {
+    color: "#0e642f",
+  },
+  bottomBar: {
+    height: 70,
+    width: 380,
+    backgroundColor: '#c4c6c9',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:-130,
+    marginTop: 90, 
   },
 });
 

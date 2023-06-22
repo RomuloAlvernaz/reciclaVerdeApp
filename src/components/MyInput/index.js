@@ -1,13 +1,14 @@
 import React from "react";
-import { SafeAreaView, TextInput, StyleSheet } from 'react-native';
+import { SafeAreaView, TextInput, StyleSheet, Text } from 'react-native';
 
 const MyInput = (props) => {
   return (
     <SafeAreaView>
+      <Text>{props.label}</Text>
       <TextInput
-        style={styles.input}
-        placeholder={props.placeholder}
-      />
+      style={styles.input}
+      placeholder={props.placeholder}
+      ></TextInput>
     </SafeAreaView>
   );
 }
