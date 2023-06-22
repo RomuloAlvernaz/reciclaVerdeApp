@@ -1,21 +1,21 @@
 import React from "react";
-import { Text, StyleSheet, ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert } from 'react-native';
+import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import InputLogin from '../../components/InputLogin/index.js'
 import MeuBotao from '../../components/Botao/index.js'
 import { useNavigation } from '@react-navigation/native';
 
 function CadastroPage() {
-
   const navigation = useNavigation();
   
   const enviar = () => {
-    Alert.alert("Cadastro realizado com sucesso!", "Faça login para continuar.")
+    Alert.alert("Cadastro realizado com sucesso!", "Faça login para continuar.");
     navigation.navigate('Home');
   }
   
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.cadastroText}>Cadastre-se</Text>
 
       <InputLogin 
@@ -70,13 +70,15 @@ function CadastroPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#fff',
   },
-  contentContainer: {
+  scrollContainer: {
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
+    paddingBottom: 20,
   },
   cadastroText: {
     color: '#0e642f',
