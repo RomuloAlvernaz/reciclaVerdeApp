@@ -18,6 +18,7 @@ const HomeScreen = () => {
 
   const handleCadastroPress = () => {
     console.log('Clicou em Cadastro');
+    navigation.navigate('Cadastro')
   };
 
   const handleInputChange = (text) => {
