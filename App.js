@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import LoginPage from './src/pages/login/index';
 import CadastroPage from './src/pages/cadastro/index'
+import SearchPage from './src/pages/search/index.js'
 
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +40,18 @@ export default function App() {
          <Stack.Screen
           name="Cadastro"
           component={CadastroPage}
+          options={{
+            headerShown: true,
+            headerTitle: '',
+            headerStyle: { backgroundColor: '#6DE398' },
+            headerTintColor: 'white',
+            headerBackTitleVisible: false,
+            headerLeftContainerStyle: styles.headerLeftContainer,
+          }}
+        />
+        <Stack.Screen
+          name="Pesquisa"
+          component={SearchPage}
           options={{
             headerShown: true,
             headerTitle: '',

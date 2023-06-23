@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import MyInput from '../../components/MyInput';
 import MyButton from '../../components/MyButton/index';
-import LoginButton from '../../components/LoginButton/index.js'
-
+import LoginButton from '../../components/LoginButton/index.js';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const HomeScreen = () => {
@@ -21,9 +20,30 @@ const HomeScreen = () => {
     navigation.navigate('Cadastro')
   };
 
+  const handlePesquisaPress = () => {
+    console.log('Clicou em Pesquisa');
+    navigation.navigate('Pesquisa')
+  };
+
   const handleInputChange = (text) => {
     setInputText(text);
   };
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const handleCategoryPress = (category) => {
+    let updatedCategories = [...selectedCategories];
+    if (updatedCategories.includes(category)) {
+      updatedCategories = updatedCategories.filter((cat) => cat !== category);
+    } else {
+      updatedCategories.push(category);
+    }
+    setSelectedCategories(updatedCategories);
+  };
+
+  const handleSearchPress = () => {
+    navigation.navigate('SearchPage', { categories: selectedCategories });
+  };
+
 
   return (
     <View style={styles.container}>
@@ -39,28 +59,88 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.whiteArea}>
-        <MyInput placeholder="Digite aqui a sua busca" value={inputText} onChangeText={handleInputChange} />
 
-        <Text style={styles.categoryText}>Procure acima a categoria{'\n'}que deseja reciclagem!</Text>
+      <View style={styles.categoryButtons}>
+      <TouchableOpacity
+            style={[
+              styles.categoryButton,
+              selectedCategories.includes('garrafasPet') && styles.selectedCategoryButton,
+            ]}
+            onPress={() => handleCategoryPress('garrafasPet')}
+          >
+            <AntDesign name="home" size={24} color="black" />
+            <Text>Garrafas Pet</Text>
+          </TouchableOpacity>
 
-        <View style={styles.rectangleWrapper}>
-          <View style={styles.rectangle}>
-            <Text style={styles.rectangleText}>
-              Garrafas Pet, Tampinhas,{'\n'}
-              Latinhas, Óleo de Cozinha,{'\n'}
-              Pilhas e Baterias.
-            </Text>
-          </View>
+          <TouchableOpacity
+            style={[
+              styles.categoryButton,
+              selectedCategories.includes('tampinhas') && styles.selectedCategoryButton,
+            ]}
+            onPress={() => handleCategoryPress('tampinhas')}
+          >
+            <AntDesign name="smileo" size={24} color="black" />
+            <Text>Tampinhas</Text>
+          </TouchableOpacity>
 
-          <View style={styles.greenRectangle}>
-            <Text style={styles.greenRectangleText}>
-              Se você trabalha com reciclagem,{'\n'}
-              cadastre-se no botão abaixo, é grátis!
-            </Text>
-          </View>
+          <TouchableOpacity
+            style={[
+              styles.categoryButton,
+              selectedCategories.includes('latinhas') && styles.selectedCategoryButton,
+            ]}
+            onPress={() => handleCategoryPress('latinhas')}
+          >
+            <AntDesign name="smileo" size={24} color="black" />
+            <Text>Latinhas</Text>
+          </TouchableOpacity>
 
-          <MyButton onPress={handleCadastroPress} text="Cadastro" />
+          <TouchableOpacity
+            style={[
+              styles.categoryButton,
+              selectedCategories.includes('oleoDeCozinha') && styles.selectedCategoryButton,
+            ]}
+            onPress={() => handleCategoryPress('oleoDeCozinha')}
+          >
+            <AntDesign name="smileo" size={24} color="black" />
+            <Text>Óleo de Cozinha</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryButton,
+              selectedCategories.includes('pilhas') && styles.selectedCategoryButton,
+            ]}
+            onPress={() => handleCategoryPress('pilhas')}
+          >
+            <AntDesign name="smileo" size={24} color="black" />
+            <Text>Pilhas</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.categoryButton,
+              selectedCategories.includes('baterias') && styles.selectedCategoryButton,
+            ]}
+            onPress={() => handleCategoryPress('baterias')}
+          >
+            <AntDesign name="smileo" size={24} color="black" />
+            <Text>Baterias</Text>
+          </TouchableOpacity>
+
+      </View>
+
+      <MyButton
+      style={styles.stylePesquisa} 
+      onPress={handlePesquisaPress} text="Pesquisar" />
+
+        <View style={styles.greenRectangle}>
+          <Text style={styles.greenRectangleText}>
+            Se você trabalha com reciclagem,{'\n'}
+            cadastre-se no botão abaixo, é grátis!
+          </Text>
         </View>
+
+        <MyButton onPress={handleCadastroPress} text="Cadastro" />
       </View>
 
       <View style={styles.bottomBar}>
@@ -69,7 +149,6 @@ const HomeScreen = () => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -107,17 +186,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  loginContainer: {
-    marginBottom: 10,
-    marginLeft: 270,
-    marginTop: 50,
-  },
-  categoryText: {
-    color: 'black',
-    fontSize: 16,
-    marginBottom: -25,
-    marginTop: -30,
-  },
   rectangleWrapper: {
     width: 350,
     height: 250,
@@ -125,30 +193,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
   },
-  rectangle: {
-    width: '90%',
-    height: '60%',
-    borderRadius: 20,
-    backgroundColor: '#c4c6c9',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  rectangleText: {
-    color: '#0e642f',
-    fontSize: 22,
-    textAlign: 'center',
-  },
   greenRectangle: {
-    marginTop: 20,
+    marginTop: 130,
     width: '80%',
-    height: '27%',
+    height: '15%',
     borderRadius: 4,
-    backgroundColor: '#6DE398',
+    backgroundColor: '#0e642f',
     justifyContent: 'center',
     alignItems: 'center',
   },
   greenRectangleText: {
-    color: 'black',
+    color: 'white',
     fontSize: 15,
     textAlign: 'center',
   },
@@ -163,6 +218,32 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  categoryButtons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: -120,
+    marginBottom: -10,
+  },
+  
+  categoryButton: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#c4c6c9',
+    borderRadius: 10,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
+  selectedCategoryButton: {
+    backgroundColor: '#6DE398',
+  },
+  stylePesquisa:{
+    marginBottom: 50,
+    marginTop:5, 
+  },
+  
 });
 
 export default HomeScreen;
