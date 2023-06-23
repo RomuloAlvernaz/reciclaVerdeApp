@@ -61,17 +61,16 @@ const HomeScreen = () => {
       <View style={styles.whiteArea}>
 
       <View style={styles.categoryButtons}>
-      <TouchableOpacity
-            style={[
-              styles.categoryButton,
-              selectedCategories.includes('garrafasPet') && styles.selectedCategoryButton,
-            ]}
-            onPress={() => handleCategoryPress('garrafasPet')}
-          >
-            <AntDesign name="home" size={24} color="black" />
-            <Text>Garrafas Pet</Text>
-          </TouchableOpacity>
-
+        <TouchableOpacity
+          style={[
+            styles.categoryButton,
+            selectedCategories.includes('garrafasPet') && styles.selectedCategoryButton,
+          ]}
+          onPress={() => handleCategoryPress('garrafasPet')}
+        >
+          <Image source={require('../../../assets/drink.png')} style={styles.icon} />
+          <Text>Garrafas Pet</Text>
+        </TouchableOpacity>
           <TouchableOpacity
             style={[
               styles.categoryButton,
@@ -79,7 +78,7 @@ const HomeScreen = () => {
             ]}
             onPress={() => handleCategoryPress('tampinhas')}
           >
-            <AntDesign name="smileo" size={24} color="black" />
+            <Image source={require('../../../assets/tampa.png')} style={styles.icon} />
             <Text>Tampinhas</Text>
           </TouchableOpacity>
 
@@ -90,7 +89,7 @@ const HomeScreen = () => {
             ]}
             onPress={() => handleCategoryPress('latinhas')}
           >
-            <AntDesign name="smileo" size={24} color="black" />
+            <Image source={require('../../../assets/lata.png')} style={styles.icon} />
             <Text>Latinhas</Text>
           </TouchableOpacity>
 
@@ -101,7 +100,7 @@ const HomeScreen = () => {
             ]}
             onPress={() => handleCategoryPress('oleoDeCozinha')}
           >
-            <AntDesign name="smileo" size={24} color="black" />
+             <Image source={require('../../../assets/oleo.png')} style={styles.icon} />
             <Text>Óleo de Cozinha</Text>
           </TouchableOpacity>
 
@@ -112,7 +111,7 @@ const HomeScreen = () => {
             ]}
             onPress={() => handleCategoryPress('pilhas')}
           >
-            <AntDesign name="smileo" size={24} color="black" />
+            <Image source={require('../../../assets/pilha.png')} style={styles.icon} />
             <Text>Pilhas</Text>
           </TouchableOpacity>
 
@@ -123,7 +122,7 @@ const HomeScreen = () => {
             ]}
             onPress={() => handleCategoryPress('baterias')}
           >
-            <AntDesign name="smileo" size={24} color="black" />
+            <Image source={require('../../../assets/bateria.png')} style={styles.icon} />
             <Text>Baterias</Text>
           </TouchableOpacity>
 
@@ -243,6 +242,11 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     marginTop:5, 
   },
+  icon: {
+    width: 24,
+    height: 40,
+  },
+  
   
 });
 
