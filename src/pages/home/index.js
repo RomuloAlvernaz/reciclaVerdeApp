@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import MyButton from '../../components/MyButton/index';
 import LoginButton from '../../components/LoginButton/index.js';
-import { AntDesign } from '@expo/vector-icons';
-
 
 const HomeScreen = () => {
   const [inputText, setInputText] = useState('');
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   const handleLoginPress = () => {
     console.log('Clicou em Login');
@@ -17,18 +16,25 @@ const HomeScreen = () => {
 
   const handleCadastroPress = () => {
     console.log('Clicou em Cadastro');
-    navigation.navigate('Cadastro')
+    navigation.navigate('Cadastro');
   };
 
   const handlePesquisaPress = () => {
     console.log('Clicou em Pesquisa');
-    navigation.navigate('Pesquisa')
+    navigation.navigate('Pesquisa');
   };
 
   const handleInputChange = (text) => {
     setInputText(text);
   };
+
   const [selectedCategories, setSelectedCategories] = useState([]);
+
+  useEffect(() => {
+    if (!isFocused) {
+      setSelectedCategories([]);
+    }
+  }, [isFocused]);
 
   const handleCategoryPress = (category) => {
     let updatedCategories = [...selectedCategories];
@@ -69,7 +75,7 @@ const HomeScreen = () => {
           onPress={() => handleCategoryPress('garrafasPet')}
         >
           <Image source={require('../../../assets/drink.png')} style={styles.icon} />
-          <Text>Garrafas Pet</Text>
+          <Text>Garrafas PET</Text>
         </TouchableOpacity>
           <TouchableOpacity
             style={[
@@ -197,12 +203,12 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '15%',
     borderRadius: 4,
-    backgroundColor: '#0e642f',
+    backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
   },
   greenRectangleText: {
-    color: 'white',
+    color: 'black',
     fontSize: 15,
     textAlign: 'center',
   },
