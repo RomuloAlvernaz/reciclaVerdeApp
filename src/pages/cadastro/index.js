@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Alert } from 'react-native';
+import { Text, StyleSheet, Alert } from 'react-native';
 import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import InputLogin from '../../components/InputLogin/index.js'
 import MeuBotao from '../../components/Botao/index.js'
