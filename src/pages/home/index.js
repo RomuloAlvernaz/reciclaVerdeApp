@@ -140,7 +140,7 @@ const HomeScreen = () => {
 
         <View style={styles.greenRectangle}>
           <Text style={styles.greenRectangleText}>
-            Se você trabalha com reciclagem,{'\n'}
+            Trabalha com reciclagem?{'\n'}
             cadastre-se no botão abaixo, é grátis!
           </Text>
         </View>
